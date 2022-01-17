@@ -3,6 +3,7 @@ package com.company;
 import java.util.ArrayList;
 
 public class Book {
+    // допущение в библиотеке по одному экземпляру каждой книги
     public static ArrayList<Book> listBook;
 
     protected String titleBook;
@@ -17,5 +18,10 @@ public class Book {
 
     public String getTitleBook() {
         return titleBook;
+    }
+
+    @Override
+    public String toString() {
+        return "книга(у) [" + titleBook + ']';
     }
 }
