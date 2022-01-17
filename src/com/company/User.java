@@ -1,9 +1,6 @@
 package com.company;
 
-import com.company.interfaces.Administrator;
-import com.company.interfaces.Librarian;
-import com.company.interfaces.Reader;
-import com.company.interfaces.Supplier;
+import com.company.interfaces.*;
 
 import java.util.ArrayList;
 
@@ -86,7 +83,7 @@ public class User implements Reader, Librarian, Supplier, Administrator {
         Book book = findBook(this, titleBook);
         if (book != null)
             giveBook(this, book);
-        System.out.println("Взята " + book + " читателем [" + this + "] у библиотекаря " + librarian);
+        System.out.println("Взята " + book + " читателем [" + this + "] у библиотекаря [" + librarian + "]");
     }
 
     @Override
@@ -96,7 +93,7 @@ public class User implements Reader, Librarian, Supplier, Administrator {
                 if (usingBook.getBook().getTitleBook().equals(titleBook)) {
                     Book.listBook.add(usingBook.getBook());
                     System.out.println("Пользователь [" + usingBook.getReader() + "] вернул " + usingBook.getBook() +
-                            " библиотекарю " + librarian);
+                            " библиотекарю [" + librarian + "]");
                     UsingBook.listBookUsing.remove(usingBook);
                     return;
                 }
@@ -114,7 +111,7 @@ public class User implements Reader, Librarian, Supplier, Administrator {
                 if (orderingBook.getTitleBook().equals(titleBook)) {
                     Book book = new Book(titleBook);
                     System.out.println("Поставщик [" + orderingBook.getSupplier() + "] осуществил поставку " + book +
-                            " библиотекарю " + librarian);
+                            " библиотекарю [" + librarian + "]");
                     Book.listBook.add(book);
                     UsingBook.listBookUsing.remove(orderingBook);
                     return;
